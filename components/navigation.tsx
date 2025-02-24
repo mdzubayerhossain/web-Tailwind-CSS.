@@ -1,9 +1,8 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, Search, Wallet } from "lucide-react"
+import { Menu, Wallet } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -12,12 +11,17 @@ export function Navigation() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
-        <div className="mr-4 hidden md:flex">
+      <div className="container flex h-16 items-center justify-between">
+        {/* Left section (Logo) */}
+        <div className="mr-4 flex items-center">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="hidden font-bold sm:inline-block">PromptMarket</span>
+            <img
+              src="https://assets.onecompiler.app/42uvjq4qp/439z9x4kf/Artboard%201.png"
+              alt="Company Logo"
+              className="h-12 w-auto"
+            />
           </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
+          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
             <Link href="/browse" className="transition-colors hover:text-foreground/80 text-foreground">
               Browse
             </Link>
@@ -32,6 +36,8 @@ export function Navigation() {
             </Link>
           </nav>
         </div>
+
+        {/* Mobile menu toggle */}
         <Sheet>
           <SheetTrigger asChild>
             <Button
@@ -42,7 +48,7 @@ export function Navigation() {
               <span className="sr-only">Toggle Menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="pr-0">
+          <SheetContent side="right" className="pr-0">
             <nav className="grid gap-6 px-2 py-6">
               <Link href="/browse" className="hover:text-foreground/80">
                 Browse
@@ -59,20 +65,17 @@ export function Navigation() {
             </nav>
           </SheetContent>
         </Sheet>
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-          <div className="w-full flex-1 md:w-auto md:flex-none">
-            <div className="relative">
-              <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input placeholder="Search prompts..." className="pl-8 md:w-[300px] lg:w-[400px]" />
-            </div>
-          </div>
-          <Button variant="outline" className="ml-auto hidden md:flex" onClick={() => setIsConnected(!isConnected)}>
-            <Wallet className="mr-2 h-4 w-4" />
-            {isConnected ? "0x1234...5678" : "Connect Wallet"}
-          </Button>
-        </div>
+
+        {/* Connect Wallet Button */}
+        <Button
+          variant="outline"
+          className="ml-auto hidden md:flex"
+          onClick={() => setIsConnected(!isConnected)}
+        >
+          <Wallet className="mr-2 h-4 w-4" />
+          {isConnected ? "0x1234...5678" : "Connect Wallet"}
+        </Button>
       </div>
     </header>
   )
 }
-

@@ -1,7 +1,8 @@
 import { Navigation } from "@/components/navigation"
 import { Hero } from "@/components/hero"
 import { FeaturedPrompts } from "@/components/featured-prompts"
-import { Footer } from "@/components/footer"
+import  Footer  from "@/components/footer"
+
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <FeaturedPrompts />
+
       </main>
       <Footer />
     </div>
