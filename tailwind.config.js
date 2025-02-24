@@ -1,10 +1,12 @@
-import { colors } from "./lib/colors"
+import { colors } from "./lib/colors"; // Ensure this file exists
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
-
+  darkMode: ["class"], // Enable class-based dark mode
+  content: [
+    "./app/**/*.{ts,tsx}", // Include all files in the app directory
+    "./components/**/*.{ts,tsx}", // Include all files in the components directory
+  ],
   theme: {
     container: {
       center: true,
@@ -21,9 +23,9 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: colors.primary[600],
+          DEFAULT: colors.primary[600], // Ensure colors.primary exists
           foreground: "hsl(var(--primary-foreground))",
-          ...colors.primary,
+          ...colors.primary, // Spread primary colors
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -71,6 +73,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-}
-
+  plugins: [require("tailwindcss-animate")], // Ensure this plugin is installed
+};
